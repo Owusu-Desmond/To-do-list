@@ -41,7 +41,7 @@ const displayTasks = () => {
     const tasksList = document.querySelector('ul');
     const taskList = document.createElement('li');
     taskList.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-start');
-  
+
     const taskListContent = `
           <div class="${(task.completed === false) ? '' : 'text-decoration-line-through'} ms-2 p-2 me-auto fs-3">
             <input
@@ -57,7 +57,7 @@ const displayTasks = () => {
     taskList.innerHTML = taskListContent;
     tasksList.appendChild(taskList);
   });
-}
+};
 
 // display tasks on page loads
 displayTasks();
