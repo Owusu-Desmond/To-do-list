@@ -36,26 +36,31 @@ const tasks = [
   },
 ];
 
-tasks.forEach((task) => {
-  const tasksList = document.querySelector('ul');
-  const taskList = document.createElement('li');
-  taskList.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-start');
+const displayTasks = () => {
+  tasks.forEach((task) => {
+    const tasksList = document.querySelector('ul');
+    const taskList = document.createElement('li');
+    taskList.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-start');
+  
+    const taskListContent = `
+          <div class="${(task.completed === false) ? '' : 'text-decoration-line-through'} ms-2 p-2 me-auto fs-3">
+            <input
+              class="form-check-input me-1"
+              ${(task.completed === false) ? '' : 'checked'}
+              type="checkbox"
+              aria-label="..."
+            />
+            <span>${task.description}</span>
+          </div>
+          <i class="btn btn-outline-primary fs-3 bi bi-three-dots-vertical"></i>
+      `;
+    taskList.innerHTML = taskListContent;
+    tasksList.appendChild(taskList);
+  });
+}
 
-  const taskListContent = `
-        <div class="${(task.completed === false) ? '' : 'text-decoration-line-through'} ms-2 p-2 me-auto fs-3">
-          <input
-            class="form-check-input me-1"
-            ${(task.completed === false) ? '' : 'checked'}
-            type="checkbox"
-            aria-label="..."
-          />
-          <span>${task.description}</span>
-        </div>
-        <i class="btn btn-outline-primary fs-3 bi bi-three-dots-vertical"></i>
-    `;
-  taskList.innerHTML = taskListContent;
-  tasksList.appendChild(taskList);
-});
+// display tasks on page loads
+displayTasks();
 
 // add line-through to checked tasks
 const checkBoxes = document.querySelectorAll('.form-check-input');
