@@ -1,6 +1,7 @@
-import "./style.css";
-import UI from "../modules/UI.js";
-import { markAsComplete, clearAllCompleteTask, clearForm} from "../modules/EventsHandles.js"
+import './style.css';
+import UI from '../modules/UI';
+import { markAsComplete, clearAllCompleteTask, clearForm } from '../modules/EventsHandles';
+
 const tasks = [
   {
     description: 'Body exercise at 7am',
@@ -45,17 +46,16 @@ addForm.addEventListener('submit', (e) => {
   const task = {
     description: addForm.elements.description.value,
     completed: false,
-  }
-  clearForm()
-  UI.addTask(task)
-  UI.editList()
-  markAsComplete()
-})
+  };
+  clearForm();
+  UI.addTask(task);
+  UI.editList();
+  markAsComplete();
+});
 
 // display already added tasks when page loads
-UI.displayTasks(tasks)
+UI.displayTasks(tasks);
 // execute the following functions when page loads
-markAsComplete()
-UI.editList()
-clearAllCompleteTask()
-
+markAsComplete();
+UI.editList();
+clearAllCompleteTask();
