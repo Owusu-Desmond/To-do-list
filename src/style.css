@@ -1,3 +1,4 @@
-* {
-  margin: 0;
+/* remove editable element border */
+[contenteditable] {
+  outline: 0 solid transparent;
 }
