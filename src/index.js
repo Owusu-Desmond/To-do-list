@@ -6,41 +6,7 @@ import Storage from '../modules/Storage';
 import validate from '../modules/Validation';
 
 const tasks = [
-  {
-    description: 'Body exercise at 7am',
-    completed: true,
-    index: 0,
-  },
-  {
-    description: 'Take breakfast',
-    completed: true,
-    index: 1,
-  },
-  {
-    description: 'Hangout with friends',
-    completed: true,
-    index: 2,
-  },
-  {
-    description: 'Complete project for Microverse',
-    completed: false,
-    index: 3,
-  },
-  {
-    description: 'Take programming tutorials',
-    completed: false,
-    index: 4,
-  },
-  {
-    description: 'Dinner plan with family',
-    completed: false,
-    index: 5,
-  },
-  {
-    description: 'Complete assignment at school',
-    completed: false,
-    index: 6,
-  },
+
 ];
 
 const addForm = document.querySelector('form');
