@@ -40,29 +40,28 @@ class Storage {
         // set indexes
         tasks.forEach((tsk, i) => {
           tsk.index = i;
-        })
+        });
         this.setTasks(tasks);
       }
     });
   }
 
-  static toggleTask(task){
+  static toggleTask(task) {
     const tasks = this.getTasks();
-    tasks.forEach(t => {
-      if(t.description === task){
+    tasks.forEach((t) => {
+      if (t.description === task) {
         t.completed = !t.completed;
-        return;
       }
-    })
-    this.setTasks(tasks)
+    });
+    this.setTasks(tasks);
   }
 
-  static clearAllCompleted(){
+  static clearAllCompleted() {
     const tasks = this.getTasks();
-    const tasksLeft = tasks.filter((task) => task.completed === false)
+    const tasksLeft = tasks.filter((task) => task.completed === false);
     tasksLeft.forEach((t, index) => {
       t.index = index;
-    })
+    });
     this.setTasks(tasksLeft);
   }
 }

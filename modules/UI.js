@@ -1,3 +1,5 @@
+import Storage from './Storage';
+
 class UI {
   static addTask(task) {
     const tasksList = document.querySelector('ul');
@@ -30,7 +32,11 @@ class UI {
     const allDeleteBtn = document.querySelectorAll('.bi-trash3-fill');
     allDeleteBtn.forEach((deleteBtn) => {
       deleteBtn.addEventListener('click', () => {
+        // delete from UI
         deleteBtn.parentElement.remove();
+        // delete from storage
+        const task = deleteBtn.parentElement.firstElementChild.lastElementChild.innerHTML;
+        Storage.deleteTask(task);
       });
     });
   }

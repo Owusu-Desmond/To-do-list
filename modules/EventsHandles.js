@@ -1,9 +1,12 @@
+import Storage from './Storage';
 // mark task as completed
 const markAsComplete = () => {
   const checkBoxes = document.querySelectorAll('.form-check-input');
   checkBoxes.forEach((checkBox) => {
-    checkBox.addEventListener('click', () => {
+    checkBox.addEventListener('change', () => {
       checkBox.parentElement.classList.toggle('text-decoration-line-through');
+      const taskDescription = checkBox.parentElement.lastElementChild.innerHTML;
+      Storage.toggleTask(taskDescription);
     });
   });
 };
@@ -16,6 +19,8 @@ const clearAllCompleteTask = () => {
     allSelected.forEach((selected) => {
       selected.parentElement.remove();
     });
+    // remove completed task from storage
+    Storage.clearAllCompleted();
   });
 };
 
