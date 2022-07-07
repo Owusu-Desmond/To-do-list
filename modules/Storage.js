@@ -10,8 +10,8 @@ class Storage {
     let tasks = JSON.parse(localStorage.getItem('tasks'));
     if (!tasks) {
       tasks = [];
-      this.setTasks(tasks)
-      return tasks
+      this.setTasks(tasks);
+      return tasks;
     }
     return tasks;
   }
@@ -20,23 +20,50 @@ class Storage {
   static addTask(task) {
     // Check if task exist or not, if not then add them to Local Storage
     const tasks = this.getTasks();
+    let taskExist = 'no';
     tasks.forEach((t) => {
-      if (t.description = task.description) {
-        return;
+      if (t.description === task.description) {
+        taskExist = 'yes';
       }
-    })
-    tasks.push(task);
-    this.setTasks(tasks);
+    });
+    if (taskExist === 'no') {
+      tasks.push(task);
+      this.setTasks(tasks);
+    }
   }
 
-  static removetask(task) {b
+  static deleteTask(task) {
     const tasks = this.getTasks();
     tasks.forEach((t, index) => {
-      if (task.description === t.description) {
+      if (task === t.description) {
         tasks.splice(index, 1);
+        // set indexes
+        tasks.forEach((tsk, i) => {
+          tsk.index = i;
+        })
         this.setTasks(tasks);
       }
     });
+  }
+
+  static toggleTask(task){
+    const tasks = this.getTasks();
+    tasks.forEach(t => {
+      if(t.description === task){
+        t.completed = !t.completed;
+        return;
+      }
+    })
+    this.setTasks(tasks)
+  }
+
+  static clearAllCompleted(){
+    const tasks = this.getTasks();
+    const tasksLeft = tasks.filter((task) => task.completed === false)
+    tasksLeft.forEach((t, index) => {
+      t.index = index;
+    })
+    this.setTasks(tasksLeft);
   }
 }
 
