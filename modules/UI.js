@@ -3,7 +3,6 @@ class UI {
     const tasksList = document.querySelector('ul');
     const taskList = document.createElement('li');
     taskList.setAttribute('class', 'list-group-item d-flex align-items-start');
-
     const taskListContent = `
                 <div class="${(task.completed === false) ? '' : 'text-decoration-line-through'} d-flex ms-2 p-2 me-auto fs-3">
                   <input
@@ -13,7 +12,7 @@ class UI {
                     aria-label="..."
                     autofocus
                   />
-                  <div class="ps-3 pe-5">${task.description}</div>
+                  <div class="ps-3 pe-5 task-description">${task.description}</div>
                 </div>
                 <i class="btn text-primary fs-3 bi bi-three-dots-vertical"></i>
             `;
@@ -54,6 +53,15 @@ class UI {
         this.deleteTask();
       });
     });
+  }
+
+  static showErrorMessage(message) {
+    const errorMessage = document.querySelector('.error-message-container');
+    errorMessage.innerHTML = message;
+    // hide error message 5 seconds time
+    setTimeout(() => {
+      errorMessage.innerHTML = '';
+    }, 5000);
   }
 }
 
