@@ -6,7 +6,7 @@ class UI {
     const taskList = document.createElement('li');
     taskList.setAttribute('class', 'list-group-item d-flex align-items-start');
     const taskListContent = `
-                <div class="${(task.completed === false) ? '' : 'text-decoration-line-through'} d-flex ms-2 p-2 me-auto fs-3">
+                <div class="${(task.completed === false) ? '' : 'text-decoration-line-through'} d-flex ms-2 p-2 me-auto fs-4">
                   <input
                     class="form-check-input me-1"
                     ${(task.completed === false) ? '' : 'checked'}
@@ -14,8 +14,9 @@ class UI {
                     aria-label="..."
                     autofocus
                   />
-                  <div class="ps-3 pe-5 task-description">${task.description}</div>
+                  <div class="ps-1 pe-4 task-description">${task.description}</div>
                 </div>
+                <i class="btn text-danger fs-3 bi bi-trash3-fill d-none"></i>
                 <i class="btn text-primary fs-3 bi bi-three-dots-vertical"></i>
             `;
     taskList.innerHTML = taskListContent;
@@ -37,26 +38,6 @@ class UI {
         // delete from storage
         const task = deleteBtn.parentElement.firstElementChild.lastElementChild.innerHTML;
         Storage.deleteTask(task);
-      });
-    });
-  }
-
-  static editList() {
-    const allThreeDotBtn = document.querySelectorAll('.bi-three-dots-vertical');
-    allThreeDotBtn.forEach((threeDotBtn) => {
-      threeDotBtn.addEventListener('click', () => {
-        const list = threeDotBtn.parentElement;
-        const tastDescription = list.firstElementChild.lastElementChild;
-        // change btn to delete btn and change color
-        threeDotBtn.classList.toggle('bi-trash3-fill');
-        threeDotBtn.classList.toggle('text-danger');
-        list.classList.add('bg-light');
-        // set content to editable autofocus and chech spellings
-        tastDescription.toggleAttribute('contentEditable');
-        tastDescription.toggleAttribute('spellCheck');
-        tastDescription.focus();
-        // delete task if necessary
-        this.deleteTask();
       });
     });
   }
