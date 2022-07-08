@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="A tool that helps to organize your day" />
-    <link rel="stylesheet" href="https://bootswatch.com/5/quartz/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/5/quartz/bootstrap.min.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
@@ -16,44 +19,53 @@
       crossorigin="anonymous"
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
     />
+    <title>To Do List</title>
   </head>
   <body>
-    <div class="container my-5">
-  <title>To Do List</title>
-      <div class="card">
-        <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between">
-            <h1 class="p-2 fs-2">Today's To Do list</h1>
-            <i class="btn fs-2 bi bi-arrow-repeat"></i>
-          </li>
-          <li
-            class="list-group-item d-flex justify-content-center align-items-start"
+    <main>
+      <div class="container my-5">
+        <div class="card">
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between">
+              <h1 class="p-2 fs-2">Today's To Do list</h1>
+              <i class="btn fs-2 bi bi-arrow-repeat"></i>
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-center align-items-start"
+            >
+              <form action="" class="w-75 m-5">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    name="description"
+                    style="font-style: italic"
+                    class="form-control form-control-lg"
+                    placeholder="Add to your list"
+                    aria-label="Task"
+                    minlength="3"
+                    autofocus
+                    required
+                  />
+                  <button class="border btn btn-primary" type="submit">
+                    Save
+                  </button>
+                </div>
+                <div
+                  class="error-message-container text-danger py-2 fs-5 text-center"
+                ></div>
+              </form>
+            </li>
+          </ul>
+          <button
+            id="clear-all-completed"
+            class="btn btn-primary text-center py-3 fs-3"
           >
-            <form action="" class="w-75 m-5">
-              <div class="input-group">
-                <input
-                  type="text"
-                  name="description"
-                  style="font-style: italic"
-                  class="form-control form-control-lg"
-                  placeholder="Add to your list"
-                  aria-label="Task"
-                  autofocus
-
-                />
-                <button class="border btn btn-primary" type="submit">
-                  Save
-                </button>
-              </div>
-              <div class="error-message-container text-danger py-2 fs-5 text-center"></div>
-            </form>
-          </li>
-        </ul>
-        <button id="clear-all-completed" class="btn btn-primary text-center py-3 fs-3">
-          Clear all completed
-        </button>
+            Clear all completed
+          </button>
+        </div>
       </div>
-    </div>
+    </main>
+
     <script src="main.js"></script>
   </body>
 </html>

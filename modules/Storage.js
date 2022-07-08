@@ -46,6 +46,16 @@ class Storage {
     });
   }
 
+  static updateTask(task, newTask) {
+    const tasks = this.getTasks();
+    tasks.forEach((t) => {
+      if (task === t.description) {
+        t.description = newTask;
+      }
+      this.setTasks(tasks);
+    });
+  }
+
   static toggleTask(task) {
     const tasks = this.getTasks();
     tasks.forEach((t) => {

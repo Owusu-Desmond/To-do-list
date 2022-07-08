@@ -1,7 +1,9 @@
 import './style.css';
 import { trim } from 'lodash';
 import UI from '../modules/UI';
-import { markAsComplete, clearAllCompleteTask, clearForm } from '../modules/EventsHandles';
+import {
+  markAsComplete, clearAllCompleteTask, clearForm, editList,
+} from '../modules/EventsHandles';
 import Storage from '../modules/Storage';
 import validate from '../modules/Validation';
 
@@ -20,9 +22,11 @@ addForm.addEventListener('submit', (e) => {
   };
   if (validate(task)) {
     Storage.addTask(task);
+    // execute after validation passed
     clearForm();
     UI.addTask(task);
-    UI.editList();
+    // enable user to edit and mark the added list as complete
+    editList();
     markAsComplete();
   }
 });
@@ -37,9 +41,9 @@ if (Storage.getTasks().length === 0) {
 } else {
   const saveTasks = Storage.getTasks();
   UI.displayTasks(saveTasks);
+  editList();
 }
 
 // execute the following functions when page loads
 markAsComplete();
 clearAllCompleteTask();
-UI.editList();
