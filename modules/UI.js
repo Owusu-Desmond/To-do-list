@@ -1,7 +1,7 @@
 import Storage from './Storage';
 
 class UI {
-  static addTask(task) {
+  static addTask = (task) => {
     const tasksList = document.querySelector('ul');
     const taskList = document.createElement('li');
     taskList.setAttribute('class', 'list-group-item d-flex align-items-start');
@@ -11,6 +11,7 @@ class UI {
                     class="form-check-input me-1"
                     ${(task.completed === false) ? '' : 'checked'}
                     type="checkbox"
+                    id="task${task.index}"
                     aria-label="..."
                     autofocus
                   />
@@ -21,6 +22,7 @@ class UI {
             `;
     taskList.innerHTML = taskListContent;
     tasksList.appendChild(taskList);
+    this.markAsComplete(task.index);
   }
 
   static displayTasks(tasks) {
@@ -49,6 +51,16 @@ class UI {
     setTimeout(() => {
       errorMessage.innerHTML = '';
     }, 5000);
+  }
+
+  // mark task as completed
+  static markAsComplete(taskIndex) {
+    const checkBox = document.getElementById(`task${taskIndex}`);
+    checkBox.addEventListener('change', () => {
+      checkBox.parentElement.classList.toggle('text-decoration-line-through');
+      const taskDescription = checkBox.parentElement.lastElementChild.innerHTML;
+      Storage.toggleTask(taskDescription);
+    });
   }
 }
 

@@ -1,18 +1,6 @@
 import { trim } from 'lodash';
 import Storage from './Storage';
 import UI from './UI';
-// mark task as completed
-const markAsComplete = () => {
-  const checkBoxes = document.querySelectorAll('.form-check-input');
-  checkBoxes.forEach((checkBox) => {
-    checkBox.addEventListener('change', () => {
-      checkBox.parentElement.classList.toggle('text-decoration-line-through');
-      const taskDescription = checkBox.parentElement.lastElementChild.innerHTML;
-      Storage.toggleTask(taskDescription);
-    });
-  });
-};
-
 // clear all completed task function
 const clearAllCompleteTask = () => {
   const clearCompleted = document.getElementById('clear-all-completed');
@@ -81,5 +69,5 @@ const editList = () => {
   });
 };
 export {
-  clearAllCompleteTask, markAsComplete, clearForm, editList,
+  clearAllCompleteTask, clearForm, editList,
 };
