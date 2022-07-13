@@ -37,7 +37,7 @@ class UI {
         deleteBtn.parentElement.remove();
         // delete from storage
         const task = deleteBtn.parentElement.firstElementChild.lastElementChild.innerHTML;
-        Storage.deleteTask(task);
+        Storage.deleteTask(task, Storage.getTasks());
       });
     });
   }
