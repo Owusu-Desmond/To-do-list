@@ -2,14 +2,14 @@ import UI from './UI';
 
 const validate = (task) => {
   const tasksDescriptions = document.querySelectorAll('.task-description');
-  let taskAdded = 'no';
+  let taskAdded = false;
   tasksDescriptions.forEach((td) => {
     if (td.innerHTML === task.description) {
-      taskAdded = 'yes';
+      taskAdded = true;
       UI.showErrorMessage('Task already added.');
     }
   });
-  if (taskAdded === 'yes') {
+  if (taskAdded) {
     return false;
   }
   return true;
