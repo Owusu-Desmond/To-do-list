@@ -32,8 +32,8 @@ class Storage {
     }
   }
 
-  static deleteTask(task) {
-    const tasks = this.getTasks();
+  static deleteTask(task, tasks) {
+    let newTasks;
     tasks.forEach((t, index) => {
       if (task === t.description) {
         tasks.splice(index, 1);
@@ -42,8 +42,10 @@ class Storage {
           tsk.index = i;
         });
         this.setTasks(tasks);
+        newTasks = tasks;
       }
     });
+    return newTasks;
   }
 
   static updateTask(task, newTask) {
