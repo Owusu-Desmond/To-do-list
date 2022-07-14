@@ -8,7 +8,9 @@ const markAsComplete = () => {
     checkBox.addEventListener('change', () => {
       checkBox.parentElement.classList.toggle('text-decoration-line-through');
       const taskDescription = checkBox.parentElement.lastElementChild.innerHTML;
-      Storage.toggleTask(taskDescription);
+      const existingTasks = Storage.getTasks();
+      // complare task to the exiting ones in the storage and toggle task complete or not
+      Storage.toggleTask(taskDescription, existingTasks);
     });
   });
 };
@@ -22,7 +24,7 @@ const clearAllCompleteTask = () => {
       selected.parentElement.remove();
     });
     // remove completed task from storage
-    Storage.clearAllCompleted();
+    Storage.clearAllCompleted(Storage.getTasks());
   });
 };
 
@@ -62,7 +64,7 @@ const editList = () => {
       let task = taskDescription.innerText;
       taskDescription.addEventListener('input', () => {
         const newTask = taskDescription.innerText;
-        Storage.updateTask(task, newTask);
+        Storage.updateTask(task, newTask, Storage.getTasks());
         task = newTask;
       });
       // Update to UI if enter key is pressed

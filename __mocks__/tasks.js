@@ -1,12 +1,12 @@
 const tasks = [
   {
     description: 'Have doctor appointment',
-    conpleted: true,
+    completed: true,
     index: 0,
   },
   {
-    description: 'Take lessons at microverse ',
-    conpleted: true,
+    description: 'Take lessons at microverse',
+    completed: true,
     index: 1,
   },
   {
