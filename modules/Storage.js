@@ -55,28 +55,28 @@ class Storage {
         t.description = newTask;
       }
       this.setTasks(tasks);
-      updated = tasks
+      updated = tasks;
     });
-    return updated
+    return updated;
   }
 
-  static toggleTask(task) {
-    const tasks = this.getTasks();
+  static toggleTask(task, tasks) {
     tasks.forEach((t) => {
       if (t.description === task) {
         t.completed = !t.completed;
       }
     });
     this.setTasks(tasks);
+    return tasks;
   }
 
-  static clearAllCompleted() {
-    const tasks = this.getTasks();
+  static clearAllCompleted(tasks) {
     const tasksLeft = tasks.filter((task) => task.completed === false);
     tasksLeft.forEach((t, index) => {
       t.index = index;
     });
     this.setTasks(tasksLeft);
+    return tasksLeft;
   }
 }
 
