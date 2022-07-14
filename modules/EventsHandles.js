@@ -1,4 +1,5 @@
 import { trim } from 'lodash';
+import tasks from '../__mocks__/tasks';
 import Storage from './Storage';
 import UI from './UI';
 // mark task as completed
@@ -62,7 +63,7 @@ const editList = () => {
       let task = taskDescription.innerText;
       taskDescription.addEventListener('input', () => {
         const newTask = taskDescription.innerText;
-        Storage.updateTask(task, newTask);
+        Storage.updateTask(task, newTask, Storage.getTasks());
         task = newTask;
       });
       // Update to UI if enter key is pressed
