@@ -48,14 +48,16 @@ class Storage {
     return newTasks;
   }
 
-  static updateTask(task, newTask) {
-    const tasks = this.getTasks();
+  static updateTask(task, newTask, tasks) {
+    let updated;
     tasks.forEach((t) => {
       if (task === t.description) {
         t.description = newTask;
       }
       this.setTasks(tasks);
+      updated = tasks
     });
+    return updated
   }
 
   static toggleTask(task) {
