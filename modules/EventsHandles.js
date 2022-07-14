@@ -1,5 +1,4 @@
 import { trim } from 'lodash';
-import tasks from '../__mocks__/tasks';
 import Storage from './Storage';
 import UI from './UI';
 // mark task as completed
@@ -9,7 +8,9 @@ const markAsComplete = () => {
     checkBox.addEventListener('change', () => {
       checkBox.parentElement.classList.toggle('text-decoration-line-through');
       const taskDescription = checkBox.parentElement.lastElementChild.innerHTML;
-      Storage.toggleTask(taskDescription);
+      const existingTasks = Storage.getTasks();
+      // complare task to the exiting ones in the storage and toggle task complete or not
+      Storage.toggleTask(taskDescription, existingTasks);
     });
   });
 };
@@ -23,7 +24,7 @@ const clearAllCompleteTask = () => {
       selected.parentElement.remove();
     });
     // remove completed task from storage
-    Storage.clearAllCompleted();
+    Storage.clearAllCompleted(Storage.getTasks());
   });
 };
 
